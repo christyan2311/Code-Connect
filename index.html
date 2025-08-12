@@ -83,6 +83,23 @@
         );
       }
 
+      function Texto({classe, children}){
+        return(
+            <p className={classe}>{children}</p>
+        )
+      }
+
+      function itemRedesSociais({Link, nome}){
+        return(
+           <li>
+            <a href={Link}>
+                <img src={`./img/${nome}.svg`} alt={`ícone do ${nome}`} />
+                {nome}
+            </a>
+           </li> 
+        )
+      }
+
       function PaginaDeLogin() {
         const [email, setEmail] = React.useState("");
         const [senha, setSenha] = React.useState("");
@@ -122,7 +139,12 @@
                   value={senha}
                   setValor={setSenha}
                 />
+                <fieldset className='form__opcoes'>
                 <Checkbox />
+                <p>
+                     <a href="#" aria-label="Esqueci minha senha">Esqueci a senha</a>    
+                </p>
+                </fieldset>
                 <Botao>Login</Botao>
               </form>
             </section>
