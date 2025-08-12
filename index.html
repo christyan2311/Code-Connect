@@ -48,12 +48,12 @@
       function CampoDeDigitacao({ label, tipo, placeholder, value, setValor }) {
         return (
           <div className="form__campo-digitacao">
-            <label for="email">{label}</label>
+            <label for={tipo}>{label}</label>
             <input
               type={tipo}
               placeholder={placeholder}
               required
-              id="email"
+              id={tipo}
               value={value}
               onChange={(evento) => {
                 setValor(evento.target.value);
@@ -71,9 +71,27 @@
         );
       }
 
+      function Chekbox() {
+        return (
+          <>
+            <div className="form__campo-checkbox">
+              <input type="Chekbox" id="lembrar" />
+              <label for="lembrar"></label>
+            </div>
+            <p className="form__opcoes-texto">Lembrar-me</p>
+          </>
+        );
+      }
+
       function PaginaDeLogin() {
         const [email, setEmail] = React.useState("");
         const [senha, setSenha] = React.useState("");
+
+        const handleSubmit = (evento) => {
+          evento.preventDefault();
+          console.log("Email:", +email);
+          console.log("Senha:", +senha);
+        };
 
         return (
           <div className="container-login">
@@ -82,7 +100,7 @@
               alt="uma mulher negra de cabelos crespos usando óculos e mexendo no computador, também há o logo da codeconnect"
             />
             <section>
-              <form>
+              <form Onsubmit={handleSubmit}>
                 <Titulo>Login</Titulo>
                 <Subtitulo>Boas-Vindas! Faça seu login.</Subtitulo>
                 <CampoDeDigitacao
@@ -104,6 +122,7 @@
                   value={senha}
                   setValor={setSenha}
                 />
+                <Chekbox />
                 <Botao>Login</Botao>
               </form>
             </section>
