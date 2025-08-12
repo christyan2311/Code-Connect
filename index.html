@@ -38,12 +38,12 @@
             )
         }
 
-        function CampoDeDigitacao(){
+        function CampoDeDigitacao({label, tipo, placeholder}){
             return (
                 <div className='form__campo-digitacao'>
-                                <label for='email'>E-mail ou usúario</label>
-                                <input type="email"
-                                placeholder='Digite o seu e-mail ou usúario'
+                                <label for='email'>{label}</label>
+                                <input type={tipo}
+                                placeholder={placeholder}
                                 required
                                 id='email'/>
                             </div>
@@ -52,7 +52,7 @@
 
         function Botao(){
             return (
-            <button type="submit">Login</button>
+            <button type="submit" className='form__botao'>Login</button>
             )
         }
 
@@ -64,14 +64,15 @@
                         <form>
                             <Titulo />
                             <Subtitulo />
-                            <CampoDeDigitacao />
-                            <div className='form__campo-digitacao'>
-                            <label for="senha">Senha</label>
-                            <input type="password"
-                            placeholder='Digite sua senha'
-                            required
-                            id='senha'/>
-                            </div>
+                            <CampoDeDigitacao label='Email ou usúario'
+                            type='email'
+                            placeholder='Digite seu e-mail ou usúario'/>
+                          <CampoDeDigitacao label='Email ou usuário'
+                          tipo='email'
+                          placeholder='Digite o seu e-mail ou usuário'/>
+                          <CampoDeDigitacao label='Senha'
+                          tipo='password'
+                          placeholder='Digite sua senha'/>
                             <Botao />
                         </form>
                     </section>
